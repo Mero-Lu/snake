@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #map {
+            width: 800px;
+            height: 600px;
+            background-color: #ccc;
+            margin: 50px auto;
+            /*食物和蛇的定位依赖于地图进行定位*/
+            position: relative;
+        }
+        #but {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="map"></div>
+    <button id="but">开始按钮</button>
+    <script src="food.js"></script>
+    <script src="snake.js"></script>
+    <script src="game.js"></script>
+    <script>
+        var but = document.querySelector('#but');
+        var map = document.querySelector("#map");
+        // 职责单一化： 一个方法内部只做一件事情
+
+        //游戏的实例对象
+        var g = new Game(map);
+        
+         // 先渲染
+         g.render();
+         
+        but.addEventListener('click',function(){
+            g.startGame();
+        })
+    </script>
+</body>
+
+</html>
